@@ -8,17 +8,17 @@ function HomeHero() {
           <img src="/images/hero.jpg" alt="hero" width="0" height="0" sizes="100vw" className="w-full h-full object-cover" />
         </div>
       </div>
-      <div className="flex flex-col w-full h-screen justify-center px-8 space-y-4">
+      <div className="flex flex-col w-full h-screen justify-center items-center sm:items-start px-8 space-y-4">
         <div>
-          <h1 className="text-3xl font-semibold font-mono dark:text-white">
+          <h1 className="text-xl sm:text-3xl font-semibold font-mono dark:text-white text-center sm:text-left">
             Hi, I'am<br/>
             <span className="text-orange-500">Teofilus Robert</span><br/>
             @Front-End Developer
           </h1>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 rounded shadow p-4 max-w-min flex flex-col space-y-4">
-          <div className="flex space-x-4">
+        <div className="bg-white dark:bg-slate-900 rounded shadow p-4 sm:max-w-min flex flex-col space-y-4">
+          <div className="flex flex-col sm:flex-row items-center sm:space-x-4 space-y-4 sm:space-y-0">
             <div className="relative basis-[100px] w-[100px] h-[120px] bg-indigo-600 rounded">
               <p className="text-9xl text-white dark:text-slate-900 font-bold font-serif leading-[100px] -mt-4 ml-8">
                 {expYears}
@@ -29,14 +29,14 @@ function HomeHero() {
                 experience
               </p>
             </div>
-            <p className="flex-1 text-sm min-w-[276px] dark:text-white">
+            <p className="flex-1 text-sm text-center sm:text-left sm:min-w-[276px] dark:text-white">
               Over {expYears} years of experience in software development, delivering successful web and mobile applications.
               <br/>
               <br/>
               Unleashing the power of teamwork, we transform ideas into innovations!
             </p>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-center sm:justify-end">
             <a
               href="https://wa.me/6282241018292"
               role="button"
