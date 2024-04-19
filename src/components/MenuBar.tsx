@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeSwitch from "./ThemeSwitch"
 
 type MenuBarProps = {
@@ -17,11 +17,18 @@ function MenuBar({ scrollTo }:MenuBarProps) {
   let clientHeight = 0
   let scrollHeight = 0
 
-  window.addEventListener("scroll", (event) => {
-    scrollY = window.scrollY
-    scrollHeight = document.documentElement.scrollHeight
-    clientHeight = document.documentElement.clientHeight
-    setCircleLeftPos(20 + Math.round(scrollY * totalMenuWidthRelative / (clientHeight * (totalPages - 1))))
+  useEffect(() => {
+    function animateMenuBar() {
+      scrollY = window.scrollY
+      scrollHeight = document.documentElement.scrollHeight
+      clientHeight = document.documentElement.clientHeight
+      setCircleLeftPos(20 + Math.round(scrollY * totalMenuWidthRelative / (clientHeight * (totalPages - 1))))
+    }
+    window.addEventListener("scroll", animateMenuBar);
+
+    return () => {
+      window.removeEventListener("scroll", animateMenuBar);
+    };
   });
 
   return (
