@@ -52,7 +52,6 @@ export default function CardMaker() {
   }
 
   const deleteData = (deletedIndex:number) => {
-    console.log(personData.filter(per => per.id !== deletedIndex))
     setPersonData(personData.filter(per => per.id !== deletedIndex))
   }
 

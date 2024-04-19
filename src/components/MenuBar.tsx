@@ -14,14 +14,13 @@ function MenuBar({ scrollTo }:MenuBarProps) {
   const totalMenuWidth = menuWidth * totalPages
   const totalMenuWidthRelative = menuWidth * (totalPages - 1)
   let scrollY = 0
-  let clientHeight = document.documentElement.clientHeight || 0
-  let scrollHeight = document.documentElement.scrollHeight || 0
+  let clientHeight = 0
+  let scrollHeight = 0
 
   window.addEventListener("scroll", (event) => {
     scrollY = window.scrollY
     scrollHeight = document.documentElement.scrollHeight
     clientHeight = document.documentElement.clientHeight
-    console.log(scrollY, totalMenuWidthRelative, clientHeight)
     setCircleLeftPos(20 + Math.round(scrollY * totalMenuWidthRelative / (clientHeight * (totalPages - 1))))
   });
 
