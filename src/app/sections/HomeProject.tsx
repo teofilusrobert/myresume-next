@@ -4,15 +4,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 
-function ProjectCard({title, href}:{
+function ProjectCard({title, href, imgUrl}:{
   title: string,
   href: string,
+  imgUrl?: string,
 }) {
    return (
     <div className="flex justify-center p-4">
-      <div className="w-[400px] h-[250] bg-white shadow p-4">
-        <h3>{title}</h3>
-        <Link href={href}>See More</Link>
+      <div className="w-[400px] bg-white dark:bg-slate-900 shadow">
+        <h3 className="text-xl font-bold p-4 dark:text-white">{title}</h3>
+        <div className="w-full h-[150px] bg-gray-200 dark:bg-gray-700">
+          {imgUrl && <img src={imgUrl} alt="preview" width="0" height="0" className="w-full h-full object-contain object-center" />}
+        </div>
+        <Link href={href} className="block text-blue-500 p-4">See More</Link>
       </div>
     </div>
    )
@@ -36,7 +40,7 @@ function HomeProject() {
       <h2 className="text-2xl font-mono font-semibold text-center dark:text-white">My Other Projects</h2>
       <div className="px-10 py-4">
         <Slider {...settings}>
-          <ProjectCard title="Card Maker" href="/cardmaker" />
+          <ProjectCard title="Card Maker" href="/cardmaker" imgUrl="/images/cardmaker.png"/>
           <ProjectCard title="DnD Thing" href="/dndthing" />
           <ProjectCard title="RPG Stuff" href="/rpgstuff" />
         </Slider>
