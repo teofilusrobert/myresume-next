@@ -9,7 +9,7 @@ type MenuBarProps = {
 
 function MenuBar({ scrollTo }:MenuBarProps) {
   const [circleLeftPos, setCircleLeftPos] = useState(20);
-  const totalPages = 2
+  const totalPages = 3
   const menuWidth = 80
   const totalMenuWidth = menuWidth * totalPages
   const totalMenuWidthRelative = menuWidth * (totalPages - 1)
@@ -21,7 +21,8 @@ function MenuBar({ scrollTo }:MenuBarProps) {
     scrollY = window.scrollY
     scrollHeight = document.documentElement.scrollHeight
     clientHeight = document.documentElement.clientHeight
-    setCircleLeftPos(20 + Math.round(scrollY * totalMenuWidthRelative / clientHeight))
+    console.log(scrollY, totalMenuWidthRelative, clientHeight)
+    setCircleLeftPos(20 + Math.round(scrollY * totalMenuWidthRelative / (clientHeight * (totalPages - 1))))
   });
 
   return (
@@ -29,19 +30,30 @@ function MenuBar({ scrollTo }:MenuBarProps) {
       <div className="relative">
         <button 
           onClick={() => scrollTo('hero')}
-          className={`w-[${menuWidth}px] font-serif font-extrabold text-xl dark:text-white`}
+          className="font-serif font-extrabold text-xl dark:text-white"
+          style={{ width: `${menuWidth}px` }}
         >TR</button>
         <button
           onClick={() => scrollTo('tech')}
-          className={`w-[${menuWidth}px] dark:text-white`}
-        >My Tech</button>
+          className="dark:text-white"
+          style={{ width: `${menuWidth}px` }}
+        >Tech</button>
+        <button
+          onClick={() => scrollTo('proj')}
+          className="dark:text-white"
+          style={{ width: `${menuWidth}px` }}
+        >Project</button>
         <div
           className={`absolute -top-[5px] w-[40px] h-[40px] rounded-full bg-indigo-500 text-orange-500 flex items-center overflow-hidden`}
           style={{ left: `${circleLeftPos}px` }}
         >
           <div style={{ minWidth: `${totalMenuWidth}px`, marginLeft: `-${circleLeftPos}px` }}>
-            <button className={`w-[${menuWidth}px] font-serif font-extrabold text-xl`}>TR</button>
-            <button className={`w-[${menuWidth}px] font-bold`}>My Tech</button>
+            <button
+              className="font-serif font-extrabold text-xl" 
+              style={{ width: `${menuWidth}px` }}
+            >TR</button>
+            <button className="font-bold" style={{ width: `${menuWidth}px` }}>Tech</button>
+            <button className="font-bold" style={{ width: `${menuWidth}px` }}>Project</button>
           </div>
         </div>
       </div>

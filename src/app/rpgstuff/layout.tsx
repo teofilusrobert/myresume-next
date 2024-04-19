@@ -4,11 +4,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pokemon App",
-  description: "This pokemon app",
+  title: "RPG Stuff",
+  description: "Ready player one?!",
 };
 
-export default function PokemonLayout({
+export default function RpgStuffLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

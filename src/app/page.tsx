@@ -5,16 +5,22 @@ import MenuBar from "@/components/MenuBar";
 import SideMenuBar from "@/components/SideMenuBar";
 import HomeHero from "./sections/HomeHero";
 import HomeTech from "./sections/HomeTech";
+import HomeProject from "./sections/HomeProject";
 
 export default function Home() {
   const heroRef = useRef<null | HTMLDivElement>(null)
   const techRef = useRef<null | HTMLDivElement>(null)
-  const scrollTo = (refId: string) => {
+  const projRef = useRef<null | HTMLDivElement>(null)
+
+  function scrollTo(refId: string) {
     if (refId === 'hero' && heroRef.current) {
       heroRef.current.scrollIntoView({ behavior: 'smooth', block: "start" })
     }
     if (refId === 'tech' && techRef.current) {
       techRef.current.scrollIntoView({ behavior: 'smooth', block: "start" })
+    }
+    if (refId === 'proj' && projRef.current) {
+      projRef.current.scrollIntoView({ behavior: 'smooth', block: "start" })
     }
   }
 
@@ -25,6 +31,9 @@ export default function Home() {
       </div>
       <div ref={techRef}>
         <HomeTech />
+      </div>
+      <div ref={projRef}>
+        <HomeProject />
       </div>
       <SideMenuBar />
       <MenuBar scrollTo={scrollTo}/>
